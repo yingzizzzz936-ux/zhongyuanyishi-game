@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新世纪集团</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.nc-header {
+    background: #fff; padding: 15px 0;
+    border-bottom: 2px solid #0056b8;
+}
+.nc-logo {
+    font-size: 24px; font-weight: bold; color: #0056b8;
+    display: inline-block;
+}
+.nc-nav { float: right; display: flex; gap: 24px; line-height: 30px; }
+.nc-nav a { color: #333; text-decoration: none; font-size: 14px; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+.nc-banner {
+    background: linear-gradient(135deg, #0056b8, #00a0e9);
+    color: #fff; padding: 60px 0; text-align: center;
+}
+.nc-banner h2 { font-size: 32px; margin-bottom: 10px; }
+.nc-section { padding: 40px 0; }
+.nc-section h3 {
+    font-size: 22px; color: #333;
+    margin-bottom: 20px; text-align: center;
+}
+.nc-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.nc-card {
+    border: 1px solid #eee; padding: 20px;
+    border-radius: 6px;
+}
+.nc-card h4 { color: #0056b8; margin-bottom: 10px; }
+.nc-card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+.nc-footer {
+    background: #222; color: #888;
+    padding: 30px 0; text-align: center;
+    font-size: 13px; margin-top: 20px;
+}
+.nc-footer .tip {
+    font-size: 11px; color: #444; margin-top: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.newcentury-group.com</div>
+    </div>
+
+    <div style="background:#fff;">
+        <div class="nc-header">
+            <div class="container">
+                <div class="nc-logo">NEW CENTURY 新世纪集团</div>
+                <div class="nc-nav">
+                    <a href="javascript:;">首页</a>
+                    <a href="javascript:;">集团介绍</a>
+                    <a href="javascript:;">业务板块</a>
+                    <a href="javascript:;">联系我们</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nc-banner">
+            <div class="container">
+                <h2>探索意识边界 开启永恒新生</h2>
+                <p>专注人类意识数字化研究 · 让生命突破肉体局限</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="nc-section">
+                <h3>全国站点</h3>
+                <div class="nc-cards">
+                    <div class="nc-card">
+                        <h4>华北总部</h4>
+                        <p>北京 · 研发运营中心</p>
+                    </div>
+                    <div class="nc-card">
+                        <h4>西南基地</h4>
+                        <p>成都 · 最大休眠舱基地<br>坐标：东经104.06 北纬30.67</p>
+                    </div>
+                    <div class="nc-card">
+                        <h4>华南分部</h4>
+                        <p>广州 · 数据存储中心</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nc-footer">
+            <p>新世纪集团有限公司 © 2024</p>
+            <p class="tip" onclick="location.href='admin-login.html'">后台入口：/admin</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

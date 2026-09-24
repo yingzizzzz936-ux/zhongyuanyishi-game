@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>结局</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.ending {
+    min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px; background: #fff;
+}
+.ending-inner { max-width: 620px; line-height: 2; }
+.ending h2 { 
+    font-size: 28px; margin-bottom: 20px; color: #8b0000;
+    text-align: center;
+}
+.ending .lead {
+    font-size: 18px; font-weight: bold; color: #333;
+    text-align: center; margin-bottom: 25px;
+    padding-bottom: 15px; border-bottom: 1px dashed #ccc;
+}
+.ending p { font-size: 15px; margin-bottom: 12px; text-indent: 2em; text-align: left; }
+.restart-btn {
+    margin-top: 30px; padding: 10px 25px;
+    background: #ddd; border: none; border-radius: 4px;
+    cursor: pointer; font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">结局</div>
+    </div>
+
+    <div class="ending">
+        <div class="ending-inner">
+            <h2>坏结局 · 悬案</h2>
+            <div class="lead">案子，就这么悬了一辈子。</div>
+            
+            <p>你盯着“接受结果”四个字看了很久，指尖悬在按钮上方微微发颤，最终还是重重按了下去。</p>
+            <p>走出派出所的时候天已经擦黑，风卷着路边的梧桐叶打旋。你忽然想起姐姐失踪那天，也是这样的风，也是这样沉得让人喘不过气的天色。</p>
+            <p>日子就这么不咸不淡地往前推。警方再也没有主动来过电话，你打过去的询问，永远只有“正在调查，有消息会第一时间通知”的官方答复，重复得多了，连接线员的声音你都快认得了。</p>
+            <p>你专程去过成都，找遍了她提过的每一条街道。新世纪集团的前台礼貌地说查无此人，九幽论坛的页面再也登不进去，像从来没有存在过一样。</p>
+            <p>一年又一年，你从来没换过手机号，总说不定哪一天，她就会突然打过来，像以前一样，笑着说弟我回来了。</p>
+            <p>每年清明你都会去老槐树下放一束花。有人说深夜的槐荫庙里，偶尔还能听见年轻女人的声音，念着采风笔记上的句子。</p>
+            <p>你永远不会知道，在成都地下深处的某个基地里，编号B-08的休眠舱永远沉睡着一个人。她的意识在新世界里过着全新的人生，再也没有弟弟，也再也没有家。</p>
+            
+            <p style="text-align:center;color:#888;margin-top:30px;">—— 游戏结束 ——</p>
+            <p style="text-align:center;"><button class="restart-btn" onclick="location.href='index.html'">重新开始</button></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

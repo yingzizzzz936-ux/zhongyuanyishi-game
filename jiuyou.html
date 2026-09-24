@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>九幽论坛</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Consolas", "微软雅黑", monospace; background: #222; height: 100vh; overflow: hidden; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+    height: 100vh; display: flex; flex-direction: column;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb; flex-shrink: 0;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.jy-header { background: #111; padding: 15px 0; border-bottom: 1px solid #333; }
+.jy-title { font-size: 22px; color: #8b0000; text-align: center; letter-spacing: 4px; }
+.jy-nav {
+    background: #151515; padding: 8px 0;
+    display: flex; gap: 24px; justify-content: center;
+    border-bottom: 1px solid #222;
+}
+.jy-nav a { color: #999; text-decoration: none; font-size: 13px; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+.jy-login-box {
+    max-width: 380px; margin: 60px auto;
+    background: #111; border: 1px solid #333; padding: 30px;
+}
+.jy-login-box h3 { text-align: center; margin-bottom: 20px; color: #b22222; }
+.jy-login-box input {
+    width: 100%; padding: 10px; margin-bottom: 15px;
+    background: #000; border: 1px solid #333; color: #ccc;
+    font-family: inherit; font-size: 14px;
+}
+.jy-login-box button {
+    width: 100%; padding: 10px;
+    background: #8b0000; border: none; color: #fff;
+    font-size: 14px; cursor: pointer;
+}
+.jy-login-tip { font-size: 12px; text-align: center; margin-top: 10px; min-height: 18px; }
+
+.jy-thread {
+    background: #111; border: 1px solid #222;
+    padding: 14px; margin-bottom: 12px;
+}
+.jy-thread h3 {
+    color: #b22222; font-size: 15px;
+    margin-bottom: 6px; cursor: pointer;
+}
+.jy-meta { font-size: 12px; color: #555; margin-bottom: 8px; }
+.jy-content {
+    font-size: 13px; line-height: 1.8; color: #aaa;
+    display: none; padding-top: 10px;
+    border-top: 1px dashed #333;
+}
+.jy-content .reply { color: #777; margin-top: 6px; }
+
+.jy-footer {
+    text-align: center; padding: 20px;
+    font-size: 11px; color: #444;
+    border-top: 1px solid #222; margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.jiuyou-luntan.com</div>
+    </div>
+
+    <div style="background:#0a0a0a;color:#ccc;flex:1;overflow-y:auto;">
+        <div class="jy-header">
+            <div class="jy-title">九 幽 论 坛</div>
+        </div>
+        <div class="jy-nav">
+            <a href="javascript:;">意识探索</a>
+            <a href="javascript:;">永生讨论</a>
+            <a href="javascript:;">招募专区</a>
+            <a href="javascript:;">个人中心</a>
+        </div>
+
+        <div class="container">
+            <div class="jy-login-box" id="loginBox">
+                <h3>会员登录</h3>
+                <input type="text" id="userInput" placeholder="用户名">
+                <input type="password" id="passInput" placeholder="密码">
+                <button onclick="doLogin()">登 录</button>
+                <div class="jy-login-tip">
+                    <span id="loginErr" style="color:#8b0000;"></span>
+                </div>
+            </div>
+
+            <div id="forumBox" style="display:none;">
+                <!-- 1 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【闲聊】大家都是怎么接触到这个论坛的？</h3>
+                    <div class="jy-meta">楼主：路人甲 | 回复：34</div>
+                    <div class="jy-content"><p>朋友推荐来的，说这里什么都能聊。</p><p>以前别的地方都删帖。</p></div>
+                </div>
+                <!-- 2 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【分享】推荐几本入门的玄学书籍</h3>
+                    <div class="jy-meta">楼主：书单推荐 | 回复：21</div>
+                    <div class="jy-content"><p>《周易入门》《道德经释义》《太乙金华宗旨》</p><p>新手别乱看。</p></div>
+                </div>
+                <!-- 3 关键帖：招募帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【招募】新世纪计划志愿者，意识永生</h3>
+                    <div class="jy-meta">楼主：NC管理员 | 回复：127</div>
+                    <div class="jy-content">
+                        <p>新世纪集团第三期意识上传志愿者招募中。</p>
+                        <p>官网：<span style="color:#b22222;cursor:pointer;text-decoration:underline;" onclick="location.href='newcentury.html'">www.newcentury-group.com</span></p>
+                        <div class="reply">12楼（曦光）：真的能永远活着吗？记忆会保留吗？</div>
+                        <div class="reply">15楼（NC管理员）：记忆完整保留，意识完全复制。加入后你就是全新的人。</div>
+                    </div>
+                </div>
+                <!-- 4 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【讨论】你们相信平行世界吗？</h3>
+                    <div class="jy-meta">楼主：平行爱好者 | 回复：43</div>
+                    <div class="jy-content"><p>总觉得有些事和记忆里不一样。</p><p>是不是记忆交叉了？</p></div>
+                </div>
+                <!-- 5 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【经验】分享一下我的出体体验</h3>
+                    <div class="jy-meta">楼主：修行者 | 回复：23</div>
+                    <div class="jy-content"><p>昨天晚上试了一次，成功了。</p><p>飘在天花板上，能看到自己。</p></div>
+                </div>
+                <!-- 6 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【经验】打坐半年的一些感受</h3>
+                    <div class="jy-meta">楼主：打坐的人 | 回复：31</div>
+                    <div class="jy-content"><p>心境平和了很多。</p><p>有时候能感觉到能量流动。</p></div>
+                </div>
+                <!-- 7 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【讨论】有没有人经常梦到同一个地方？</h3>
+                    <div class="jy-meta">楼主：多梦的人 | 回复：41</div>
+                    <div class="jy-content"><p>连续一个月梦到同一棵大槐树。</p><p>每次场景都一模一样。</p></div>
+                </div>
+                <!-- 8 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【求助】总是梦到前世怎么办？</h3>
+                    <div class="jy-meta">楼主：求解答 | 回复：18</div>
+                    <div class="jy-content"><p>总梦到古代的事情。</p><p>感觉很真实。</p></div>
+                </div>
+                <!-- 9 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【分享】我已经接入新世纪三天了</h3>
+                    <div class="jy-meta">楼主：新人类003号 | 回复：89</div>
+                    <div class="jy-content"><p>再也不用吃饭睡觉生病。</p><p>肉身本来就是束缚。</p></div>
+                </div>
+                <!-- 10 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【杂谈】能量疗愈是不是智商税？</h3>
+                    <div class="jy-meta">楼主：质疑者 | 回复：27</div>
+                    <div class="jy-content"><p>一次好几千。</p><p>真的有用吗？</p></div>
+                </div>
+                <!-- 11 关键帖：内部爆料 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【杂谈】说个内部消息，后台密码很简单</h3>
+                    <div class="jy-meta">楼主：内部人士 | 回复：56</div>
+                    <div class="jy-content">
+                        <p>后台地址：<span style="color:#b22222;cursor:pointer;text-decoration:underline;" onclick="location.href='admin-login.html'">www.newcentury-group.com/admin</span></p>
+                        <p>初始账号密码都是admin，大部分站点都没改。</p>
+                        <p>里面能查到所有休眠者的信息和位置，懂的都懂。</p>
+                    </div>
+                </div>
+                <!-- 12 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【分享】一次神奇的濒死体验</h3>
+                    <div class="jy-meta">楼主：过来人 | 回复：45</div>
+                    <div class="jy-content"><p>去年出车祸，心跳停了三分钟。</p><p>看到了光和去世的亲人。</p></div>
+                </div>
+                <!-- 13 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【玄学】大家觉得槐神是正的还是邪的？</h3>
+                    <div class="jy-meta">楼主：玄学爱好者 | 回复：37</div>
+                    <div class="jy-content"><p>传了几百年了。</p><p>有人说保平安，有人说献祭。</p></div>
+                </div>
+                <!-- 14 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【讨论】记忆会不会被篡改？</h3>
+                    <div class="jy-meta">楼主：记忆研究 | 回复：32</div>
+                    <div class="jy-content"><p>有没有可能记忆是被植入的？</p><p>有些事明明记得，实际没发生。</p></div>
+                </div>
+                <!-- 15 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【教程】简单的保护自己的小方法</h3>
+                    <div class="jy-meta">楼主：善意人 | 回复：29</div>
+                    <div class="jy-content"><p>走夜路别回头。</p><p>都是民间土方法。</p></div>
+                </div>
+                <!-- 16 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【公告】禁止讨论违法违规内容</h3>
+                    <div class="jy-meta">楼主：管理员 | 回复：0</div>
+                    <div class="jy-content"><p>本论坛仅用于学术交流。</p><p>违者永久封禁。</p></div>
+                </div>
+                <!-- 17 关键帖：寻人帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【求助】曦光你在吗？看到回我</h3>
+                    <div class="jy-meta">楼主：寻人者 | 回复：3</div>
+                    <div class="jy-content">
+                        <p>林曦，你家人很担心你。</p>
+                        <p>看到了快点回家。</p>
+                        <div class="reply">2楼：这名字有点熟，好像上个月进计划了？</div>
+                        <div class="reply">3楼：进了计划就不会看这个了，楼主别等了。</div>
+                    </div>
+                </div>
+                <!-- 18 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【闲聊】大家有没有遇见过预知梦？</h3>
+                    <div class="jy-meta">楼主：梦先知 | 回复：25</div>
+                    <div class="jy-content"><p>前几天梦到亲戚摔了，第二天真摔了。</p><p>是巧合吗？</p></div>
+                </div>
+                <!-- 19 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【挂人】曝光一个骗子，说能帮人回魂</h3>
+                    <div class="jy-meta">楼主：被骗的人 | 回复：12</div>
+                    <div class="jy-content"><p>骗了我五千块。</p><p>大家别上当。</p></div>
+                </div>
+                <!-- 20 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【统计】接入新世纪的朋友都多大了？</h3>
+                    <div class="jy-meta">楼主：统计员 | 回复：67</div>
+                    <div class="jy-content"><p>32岁，绝症，没办法了。</p><p>28，就是想试试。</p></div>
+                </div>
+                <!-- 21 水帖 -->
+                <div class="jy-thread">
+                    <h3 onclick="toggleThread(this)">【闲聊】意识上传后，我还是我吗？</h3>
+                    <div class="jy-meta">楼主：哲学思考 | 回复：38</div>
+                    <div class="jy-content"><p>复制的只是记忆，原来的我不还是死了？</p><p>活下来的只是复制体。</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jy-footer">
+            <p>九幽论坛 © 2024 | 自由交流，后果自负</p>
+        </div>
+    </div>
+</div>
+
+<script>
+var errCount = 0;
+function toggleThread(el) {
+    var content = el.nextElementSibling.nextElementSibling;
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+}
+function doLogin() {
+    var u = document.getElementById('userInput').value.trim();
+    var p = document.getElementById('passInput').value.trim();
+    if (u === '曦光' && p === '19900903') {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('forumBox').style.display = 'block';
+    } else {
+        errCount++;
+        document.getElementById('loginErr').textContent = '账号或密码错误（' + errCount + '/3）';
+        if (errCount >= 3) {
+            alert('账号永久封禁');
+            location.href = 'ending-bad2.html';
+        }
+    }
+}
+</script>
+</body>
+</html>

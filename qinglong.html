@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青龙餐馆 - 本地民俗论坛</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "宋体", serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.ql-header {
+    background: #8b4513; color: #f5ecd7;
+    padding: 15px 0; border-bottom: 3px solid #5c2e00;
+}
+.ql-title {
+    font-size: 28px; font-family: "楷体", serif;
+    text-align: center; letter-spacing: 8px;
+}
+.ql-nav {
+    background: #a0522d; padding: 8px 0;
+    display: flex; gap: 24px; justify-content: center;
+}
+.ql-nav a { color: #f5ecd7; text-decoration: none; font-size: 14px; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+.ql-forum {
+    display: grid; grid-template-columns: 3fr 1fr;
+    gap: 20px; margin-top: 10px;
+}
+.ql-thread {
+    background: #fff9e8; border: 1px solid #d4b88a;
+    padding: 14px; margin-bottom: 12px;
+}
+.ql-thread h3 {
+    color: #8b4513; font-size: 16px;
+    margin-bottom: 6px; cursor: pointer;
+}
+.ql-meta { font-size: 12px; color: #997755; margin-bottom: 8px; }
+.ql-content {
+    font-size: 14px; line-height: 1.8; color: #554433;
+    display: none; padding-top: 10px;
+    border-top: 1px dashed #d4b88a;
+}
+.ql-content .reply { color: #666; margin-top: 6px; }
+
+.ql-sidebar {
+    background: #fff9e8; border: 1px solid #d4b88a;
+    padding: 15px; height: fit-content;
+    position: sticky; top: 20px;
+}
+.ql-sidebar h4 {
+    color: #8b4513; font-size: 14px;
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px dashed #d4b88a;
+}
+.ql-sidebar ul { list-style: none; font-size: 13px; padding: 0; }
+.ql-sidebar li { padding: 5px 0; color: #665544; cursor: pointer; }
+
+.ql-footer {
+    text-align: center; padding: 20px;
+    font-size: 12px; color: #997755;
+    border-top: 1px solid #d4b88a; margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.qinglong-cantina.com</div>
+    </div>
+
+    <div style="background:#f5ecd7;">
+        <div class="ql-header">
+            <div class="ql-title">青 龙 餐 馆</div>
+        </div>
+        <div class="ql-nav">
+            <a href="javascript:;">民俗杂谈</a>
+            <a href="javascript:;">奇闻异事</a>
+            <a href="javascript:;">寻人寻物</a>
+            <a href="javascript:;">美食分享</a>
+            <a href="javascript:;">站务公告</a>
+        </div>
+
+        <div class="container">
+            <div class="ql-forum">
+                <div class="ql-main">
+                    <!-- 1 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【民生】下个月县城到村里的班车要改时间了</h3>
+                        <div class="ql-meta">楼主：村支书老王 | 发表于：2024-08-18 | 回复：8</div>
+                        <div class="ql-content"><p>早班车提前半小时，晚班车延后半小时。</p><p>主要接送学生和赶集的，大家注意别误点。</p></div>
+                    </div>
+                    <!-- 2 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【赶集】明天逢大集，有一起去的吗？</h3>
+                        <div class="ql-meta">楼主：张大姐 | 发表于：2024-08-19 | 回复：11</div>
+                        <div class="ql-content"><p>明天农历初五，大集，东西全还便宜。</p><p>有没有一起去的搭个伴。</p></div>
+                    </div>
+                    <!-- 3 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【美食】陈老板家的红烧肉真的绝了</h3>
+                        <div class="ql-meta">楼主：吃货小王 | 发表于：2024-08-05 | 回复：12</div>
+                        <div class="ql-content"><p>昨天去吃了一次，太香了，肥而不腻。</p><p>陈老板说炖了三个小时，一般人做不出来这味儿。</p></div>
+                    </div>
+                    <!-- 4 关键帖：采风帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【采风】槐村槐荫庙有没人听过？下周去采风</h3>
+                        <div class="ql-meta">楼主：曦光 | 发表于：2024-07-15 | 回复：28</div>
+                        <div class="ql-content">
+                            <p>楼主是民俗专业的，毕业采风打算去槐村的槐荫庙，据说那边有很老的槐神信仰。</p>
+                            <p>有没有本地的朋友知道那边现在还能进去吗？有没有什么需要注意的忌讳？</p>
+                            <div class="reply">1楼：别去，那地方邪性，前几年还有人去了之后就失踪了。</div>
+                            <div class="reply">3楼（陈老板）：小姑娘，来店里坐坐啊，我跟你讲讲槐荫庙的来头。</div>
+                            <div class="reply">27楼（匿名）：小心「借命」。</div>
+                        </div>
+                    </div>
+                    <!-- 5 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【求助】家里老人腿疼，有没有靠谱的推拿？</h3>
+                        <div class="ql-meta">楼主：李家媳妇 | 发表于：2024-07-28 | 回复：15</div>
+                        <div class="ql-content"><p>疼了快一个月了，吃药也不见好。</p><p>想找个老中医看看。</p></div>
+                    </div>
+                    <!-- 6 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【日常】晒一晒我家院子里的老槐树</h3>
+                        <div class="ql-meta">楼主：老赵家 | 发表于：2024-07-22 | 回复：9</div>
+                        <div class="ql-content"><p>我爷爷那辈种的，快一百年了，夏天乘凉特别舒服。</p><p>都说老槐树有灵性。</p></div>
+                    </div>
+                    <!-- 7 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【通知】今年新农合缴费开始了</h3>
+                        <div class="ql-meta">楼主：会计小李 | 发表于：2024-08-01 | 回复：6</div>
+                        <div class="ql-content"><p>今年每人380，月底前交完。</p><p>逾期不能补。</p></div>
+                    </div>
+                    <!-- 8 关键帖：陈老板年轻帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【闲谈】大家有没有觉得陈老板这两年越来越年轻了？</h3>
+                        <div class="ql-meta">楼主：村里老周 | 发表于：2024-06-02 | 回复：46</div>
+                        <div class="ql-content">
+                            <p>陈老板今年快七十了吧？十年前看着还像个老头，这两年看着也就五十出头。</p>
+                            <p>有人说他会养生，也有人说他不对劲。他那餐馆晚上后半夜还亮着灯，经常有生人进去。</p>
+                            <div class="reply">23楼：我听说啊，他懂点邪门的东西，叫什么…借命？</div>
+                            <div class="reply">42楼（管理员）：造谣的删了啊，再说说禁言。</div>
+                        </div>
+                    </div>
+                    <!-- 9 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【日常】我家狗子昨天逮了只兔子</h3>
+                        <div class="ql-meta">楼主：二柱子 | 发表于：2024-08-12 | 回复：7</div>
+                        <div class="ql-content"><p>大黄狗，追了二里地才逮着。</p><p>晚上炖了，香。</p></div>
+                    </div>
+                    <!-- 10 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【吐槽】村口修路修半个月了</h3>
+                        <div class="ql-meta">楼主：开车的 | 发表于：2024-08-15 | 回复：13</div>
+                        <div class="ql-content"><p>天天挖了填填了挖，也不知道修啥。</p><p>绕路都绕烦了。</p></div>
+                    </div>
+                    <!-- 11 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【招工】青龙餐馆招服务员，包吃住</h3>
+                        <div class="ql-meta">楼主：陈老板 | 发表于：2024-07-20 | 回复：3</div>
+                        <div class="ql-content"><p>年龄18-40，勤快就行。</p><p>工资面议，包吃住，月底准时发。</p></div>
+                    </div>
+                    <!-- 12 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【分享】昨天庙会拍的照片，人真多</h3>
+                        <div class="ql-meta">楼主：爱拍照 | 发表于：2024-07-18 | 回复：10</div>
+                        <div class="ql-content"><p>一年一度的槐神庙会，太热闹了。</p><p>卖啥的都有，还有唱戏的。</p></div>
+                    </div>
+                    <!-- 13 关键帖：迁移公告 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【公告】本站迁移通知，新论坛地址内附</h3>
+                        <div class="ql-meta">管理员 | 发表于：2024-08-01 | 回复：0</div>
+                        <div class="ql-content">
+                            <p>因监管原因，本站即日起逐步停止运营。</p>
+                            <p>老用户可移步新论坛继续交流，域名：<span style="color:#8b4513;cursor:pointer;text-decoration:underline;" onclick="location.href='jiuyou.html'">www.jiuyou-luntan.com</span></p>
+                            <p>注册需要邀请码，老用户凭原账号密码可直接登录。</p>
+                        </div>
+                    </div>
+                    <!-- 14 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【寻物】丢了一串钥匙，有捡到的吗？</h3>
+                        <div class="ql-meta">楼主：刘师傅 | 发表于：2024-08-10 | 回复：4</div>
+                        <div class="ql-content"><p>昨天赶集丢的，串着个小铜铃。</p><p>有捡到的麻烦说一声。</p></div>
+                    </div>
+                    <!-- 15 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【寻物】丢了一只橘猫，看到的联系我</h3>
+                        <div class="ql-meta">楼主：张大姐 | 发表于：2024-08-10 | 回复：5</div>
+                        <div class="ql-content"><p>黄橘猫，脖子上有红绳，叫大黄。</p><p>昨天下午跑出去就没回来。</p></div>
+                    </div>
+                    <!-- 16 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【闲谈】今年收成怎么样？</h3>
+                        <div class="ql-meta">楼主：种地的 | 发表于：2024-07-25 | 回复：19</div>
+                        <div class="ql-content"><p>我家玉米还行，就是有点旱。</p><p>你们家呢？</p></div>
+                    </div>
+                    <!-- 17 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【推荐】村西头修理铺修家电真不错</h3>
+                        <div class="ql-meta">楼主：王婶 | 发表于：2024-08-08 | 回复：5</div>
+                        <div class="ql-content"><p>我家冰箱坏了，李师傅半小时就修好了。</p><p>还便宜。</p></div>
+                    </div>
+                    <!-- 18 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【吐槽】最近村里怪事有点多啊</h3>
+                        <div class="ql-meta">楼主：普通村民 | 发表于：2024-07-30 | 回复：18</div>
+                        <div class="ql-content"><p>这半个月都第三个人不见了，都是外来的。</p><p>警察来了好几次啥都没查到。</p></div>
+                    </div>
+                    <!-- 19 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【求助】有没有人会修压水井？</h3>
+                        <div class="ql-meta">楼主：老周家 | 发表于：2024-08-16 | 回复：7</div>
+                        <div class="ql-content"><p>井压不上来水了。</p><p>有会修的留个联系方式。</p></div>
+                    </div>
+                    <!-- 20 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【怀旧】二十年前的村小学照片</h3>
+                        <div class="ql-meta">楼主：老照片爱好者 | 发表于：2024-08-12 | 回复：21</div>
+                        <div class="ql-content"><p>98年的毕业照，那时候还是土坯房。</p><p>现在都盖新楼了。</p></div>
+                    </div>
+                    <!-- 21 水帖 -->
+                    <div class="ql-thread">
+                        <h3 onclick="toggleThread(this)">【闲聊】陈老板和新论坛有关系吗？</h3>
+                        <div class="ql-meta">楼主：好奇的人 | 发表于：2024-08-05 | 回复：9</div>
+                        <div class="ql-content"><p>听说新论坛那边也有个姓陈的管理员。</p><p>会不会就是陈老板？</p></div>
+                    </div>
+                </div>
+
+                <div class="ql-sidebar">
+                    <h4>社区统计</h4>
+                    <ul>
+                        <li>注册会员：1247人</li>
+                        <li>今日发帖：12</li>
+                        <li>最高在线：89人</li>
+                    </ul>
+                    <h4 style="margin-top:20px;">热门用户</h4>
+                    <ul>
+                        <li>陈老板</li>
+                        <li>曦光</li>
+                        <li>村里老周</li>
+                        <li>管理员</li>
+                    </ul>
+                    <h4 style="margin-top:20px;">友情链接</h4>
+                    <ul>
+                        <li onclick="location.href='jiuyou.html'">九幽匿名论坛</li>
+                        <li onclick="location.href='qingcheng-life.html'">青城生活网</li>
+                        <li onclick="location.href='taojiu.html'">淘旧货二手网</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="ql-footer">
+            <p>青龙餐馆民俗论坛 © 1998-2024 | 站长：陈老板</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleThread(el) {
+    var content = el.nextElementSibling.nextElementSibling;
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+}
+</script>
+</body>
+</html>

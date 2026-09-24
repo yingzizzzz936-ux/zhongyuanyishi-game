@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青城生活网</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.life-header { background: #cc0000; color: #fff; padding: 10px 0; }
+.life-title { font-size: 22px; font-weight: bold; display: inline-block; }
+.life-nav { background: #ee0000; padding: 8px 0; display: flex; gap: 20px; }
+.life-nav a { color: #fff; text-decoration: none; font-size: 14px; }
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+.life-news { padding: 20px 0; }
+.news-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+.news-item h4 { color: #333; margin-bottom: 8px; cursor: pointer; }
+.news-item p { font-size: 13px; color: #666; line-height: 1.6; }
+.news-meta { font-size: 12px; color: #999; margin-top: 5px; }
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.qingcheng-life.com</div>
+    </div>
+
+    <div style="background:#fff;">
+        <div class="life-header">
+            <div class="container">
+                <div class="life-title">青城生活网</div>
+            </div>
+        </div>
+        <div class="life-nav">
+            <div class="container">
+                <a href="javascript:;">新闻</a>
+                <a href="javascript:;">民生</a>
+                <a href="javascript:;">招聘</a>
+                <a href="javascript:;">二手</a>
+                <a href="javascript:;">论坛</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="life-news">
+                <div class="news-item">
+                    <h4>下月起实施新的城乡公交时刻表，覆盖12个乡镇</h4>
+                    <p>为方便群众出行，县交通局近日宣布，从下月1日起调整全县城乡公交运营时间，新增3条线路，延长2条末班车时间...</p>
+                    <div class="news-meta">2024-08-20 | 记者：张三</div>
+                </div>
+                <div class="news-item">
+                    <h4>县城中心菜市场升级改造完工，本周六正式营业</h4>
+                    <p>历时三个月改造的中心菜市场将于本周六重新开业，新增摊位80个，配备中央空调和智能检测系统...</p>
+                    <div class="news-meta">2024-08-18 | 记者：李四</div>
+                </div>
+                <div class="news-item">
+                    <h4>我县举办首届民俗文化节，吸引上万游客</h4>
+                    <p>上周末，我县首届民俗文化节在槐村举办，展示了槐神信仰、民间手工艺等特色文化，吸引了周边上万游客...</p>
+                    <div class="news-meta">2024-07-25 | 记者：王五</div>
+                </div>
+                <div class="news-item">
+                    <h4>警方提醒：近期接到多起电信诈骗报案，请提高警惕</h4>
+                    <p>近期我县接到多起冒充公检法的电信诈骗报案，警方提醒广大市民，凡是要求转账汇款的一律是诈骗...</p>
+                    <div class="news-meta">2024-08-15 | 记者：赵六</div>
+                </div>
+                <div class="news-item">
+                    <h4>县人民医院新院区预计明年投入使用</h4>
+                    <p>县人民医院新院区建设项目进展顺利，目前主体结构已封顶，预计明年下半年正式投入使用...</p>
+                    <div class="news-meta">2024-08-10 | 记者：孙七</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

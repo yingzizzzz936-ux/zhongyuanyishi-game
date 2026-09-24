@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理系统 - 新世纪</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.ap-layout {
+    display: grid; grid-template-columns: 200px 1fr;
+    min-height: 600px; background: #f0f2f5;
+}
+.ap-sidebar { background: #001529; color: #fff; padding: 20px 0; }
+.ap-menu-item {
+    padding: 12px 20px; cursor: pointer;
+    font-size: 14px;
+}
+.ap-menu-item.active { background: #1890ff; }
+
+.ap-content { padding: 20px; }
+.ap-card {
+    background: #fff; border-radius: 6px;
+    padding: 20px; margin-bottom: 20px;
+}
+.ap-card h4 { margin-bottom: 15px; color: #333; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table th, .table td {
+    padding: 10px; border-bottom: 1px solid #eee;
+    text-align: left;
+}
+.table th { background: #fafafa; color: #666; }
+
+.log-item {
+    padding: 8px 0; border-bottom: 1px dashed #eee;
+    font-size: 13px; color: #555;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">管理系统</div>
+    </div>
+
+    <div class="ap-layout">
+        <div class="ap-sidebar">
+            <div class="ap-menu-item active">休眠舱管理</div>
+            <div class="ap-menu-item">意识备份列表</div>
+            <div class="ap-menu-item">操作日志</div>
+            <div class="ap-menu-item" onclick="location.href='location.html'">定位系统</div>
+            <div class="ap-menu-item" onclick="location.href='newcentury.html'">返回官网</div>
+        </div>
+        <div class="ap-content">
+            <div class="ap-card">
+                <h4>休眠舱人员列表（西南基地）</h4>
+                <table class="table">
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>入舱日期</th>
+                        <th>意识状态</th>
+                        <th>舱位号</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>张某某</td>
+                        <td>2023-01-15</td>
+                        <td>已接入</td>
+                        <td>A-01</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>王某某</td>
+                        <td>2023-03-22</td>
+                        <td>已接入</td>
+                        <td>A-02</td>
+                    </tr>
+                    <tr style="color:#0056b8;">
+                        <td>007</td>
+                        <td>林曦</td>
+                        <td>2024-07-28</td>
+                        <td>已接入 / 记忆已清除</td>
+                        <td>B-08</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ap-card">
+                <h4>意识备份记录</h4>
+                <div class="log-item">2024-07-28 林曦 首次意识上传完成，原始备份已归档</div>
+                <div class="log-item">2024-07-29 林曦 记忆清除程序执行完成</div>
+                <div class="log-item">2024-07-30 林曦 接入新世界社区</div>
+                <div class="log-item" style="color:#0056b8;">
+                    系统备注：原始记忆备份存放于1990-09-03时间节点，可通过回溯协议恢复
+                </div>
+            </div>
+            <div class="ap-card">
+                <h4>系统说明</h4>
+                <p style="font-size:13px;color:#666;line-height:1.8;">
+                    1. 每个意识体均保留上传前完整记忆备份，归档于出生时间节点<br>
+                    2. 管理员可通过时间回溯协议，将原始记忆重新注入意识体<br>
+                    3. 西南基地坐标：北纬30.67，东经104.06
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

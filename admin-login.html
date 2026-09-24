@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>后台登录 - 新世纪管理系统</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.login-wrap {
+    background: #f0f2f5; min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+}
+.login-panel {
+    width: 360px; background: #fff;
+    padding: 40px; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.login-panel h3 {
+    text-align: center; margin-bottom: 30px;
+    color: #333;
+}
+.login-panel input {
+    width: 100%; padding: 12px; margin-bottom: 15px;
+    border: 1px solid #ddd; border-radius: 4px;
+    font-size: 14px;
+}
+.login-panel button {
+    width: 100%; padding: 12px;
+    background: #0056b8; border: none; color: #fff;
+    border-radius: 4px; font-size: 15px; cursor: pointer;
+}
+.login-tip {
+    font-size: 12px; color: #999;
+    text-align: center; margin-top: 15px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.newcentury-group.com/admin</div>
+    </div>
+
+    <div class="login-wrap">
+        <div class="login-panel">
+            <h3>新世纪管理系统 V2.0</h3>
+            <input type="text" id="adminUser" placeholder="账号">
+            <input type="password" id="adminPass" placeholder="密码">
+            <button onclick="doAdminLogin()">登 录</button>
+            <div class="login-tip">
+                系统提示：初始账号密码均为管理员默认值<br>
+                <span id="adminErr" style="color:#8b0000;"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var errCount = 0;
+function doAdminLogin() {
+    var u = document.getElementById('adminUser').value.trim();
+    var p = document.getElementById('adminPass').value.trim();
+    if (u === 'admin' && p === 'admin') {
+        location.href = 'admin-panel.html';
+    } else {
+        errCount++;
+        document.getElementById('adminErr').textContent = '验证失败（' + errCount + '/3）';
+        if (errCount >= 3) {
+            alert('系统已锁定您的IP');
+            location.href = 'ending-bad3.html';
+        }
+    }
+}
+</script>
+</body>
+</html>

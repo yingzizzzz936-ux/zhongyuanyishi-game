@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XX派出所</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.police-wrap { background: #f5f5f5; min-height: 600px; }
+.police-room { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+.record-form {
+    background: #fff; padding: 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.form-row { margin-bottom: 15px; }
+.form-row label {
+    display: block; font-size: 14px;
+    color: #555; margin-bottom: 5px;
+}
+.form-row input, .form-row textarea {
+    width: 100%; padding: 8px;
+    border: 1px solid #ddd; border-radius: 3px;
+    font-size: 14px; font-family: inherit;
+}
+.form-row textarea { height: 100px; resize: none; }
+.submit-btn {
+    background: #2d6cdf; color: #fff;
+    border: none; padding: 10px 20px;
+    border-radius: 3px; cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">XX派出所</div>
+    </div>
+
+    <div class="police-wrap">
+        <div class="police-room">
+            <h3 style="margin-bottom:20px;color:#333;">XX派出所 - 询问室</h3>
+            <div class="record-form">
+                <div class="form-row">
+                    <label>姓名</label>
+                    <input type="text" value="林默" readonly>
+                </div>
+                <div class="form-row">
+                    <label>与失踪人关系</label>
+                    <input type="text" value="姐弟" readonly>
+                </div>
+                <div class="form-row">
+                    <label>失踪经过</label>
+                    <textarea readonly>姐姐林曦7月28日去成都采风后失联，手机关机，微信不回。她之前提过一个叫新世纪的公司，还有一个叫九幽的论坛。</textarea>
+                </div>
+                <div class="form-row">
+                    <label>有没有证据显示涉及违法犯罪？</label>
+                    <input type="text" value="暂时没有" readonly>
+                </div>
+                <button class="submit-btn" onclick="location.href='phone-msg.html'">提交笔录</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

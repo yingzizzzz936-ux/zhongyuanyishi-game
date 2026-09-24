@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>结局</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.ending {
+    min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px; background: #fff;
+}
+.ending-inner { max-width: 620px; line-height: 2; }
+.ending h2 { 
+    font-size: 28px; margin-bottom: 20px; color: #0066cc;
+    text-align: center;
+}
+.ending .lead {
+    font-size: 18px; font-weight: bold; color: #333;
+    text-align: center; margin-bottom: 25px;
+    padding-bottom: 15px; border-bottom: 1px dashed #ccc;
+}
+.ending p { font-size: 15px; margin-bottom: 12px; text-indent: 2em; text-align: left; }
+.restart-btn {
+    margin-top: 30px; padding: 10px 25px;
+    background: #ddd; border: none; border-radius: 4px;
+    cursor: pointer; font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">结局</div>
+    </div>
+
+    <div class="ending">
+        <div class="ending-inner">
+            <h2>真结局 · 时光回溯</h2>
+            <div class="lead">记忆涌回来的那一刻，你知道，她回来了。</div>
+            
+            <p>你深吸一口气，按下了“执行记忆回溯”。</p>
+            <p>系统开始连接1990年9月3日的时间节点——那是姐姐出生的日子，也是她所有记忆最初的起点。</p>
+            <p>意识流穿过时间的洪流，一点点往回走。你像隔着一层玻璃，看着她的一生在眼前铺展开：小时候她牵着你的手过马路，把你护在身后；大学时她兴奋地跟你说她选了民俗专业，眼睛亮得像星星；出发去采风前，她笑着跟你挥手，说弟我回来给你带特产。</p>
+            <p>所有被删掉的记忆，像退潮后的沙滩，一点点重新显露出来，落回到她的意识里。</p>
+            <p>休眠舱的雾气慢慢散开，舱盖缓缓打开。她睁开眼睛，视线慢慢聚焦，落在你脸上。</p>
+            <p>她愣了一下，然后眼睛一点点红了，开口，声音有点哑，却清清楚楚地叫了你一声：</p>
+            <p>「弟。」</p>
+            <p>你扶住舱沿，什么都说不出来，只是点点头，然后伸手抱住她。</p>
+            <p>外面的天很亮。新世纪的阴谋还藏在水面之下，还有很多事没有解决，还有很长的路要走。但至少这一刻，你把你的姐姐，找回来了。</p>
+            
+            <p style="text-align:center;color:#0066cc;margin-top:30px;">—— 恭喜通关 ——</p>
+            <p style="text-align:center;"><button class="restart-btn" onclick="location.href='index.html'">重新开始</button></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

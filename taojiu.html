@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>淘旧货</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.tao-header { background: #ff6600; color: #fff; padding: 15px 0; }
+.tao-title { font-size: 24px; font-weight: bold; }
+.tao-search { float: right; }
+.tao-search input {
+    padding: 6px 10px; border: none;
+    border-radius: 3px; width: 200px;
+}
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px; }
+.tao-goods {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 15px; padding: 20px 0;
+}
+.goods-item {
+    background: #fff; padding: 10px;
+    border-radius: 4px; text-align: center;
+}
+.goods-img {
+    height: 120px; background: #eee;
+    margin-bottom: 8px; border-radius: 3px;
+    line-height: 120px; color: #999; font-size: 13px;
+}
+.goods-name { font-size: 13px; color: #333; margin-bottom: 5px; }
+.goods-price { color: #ff6600; font-weight: bold; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">www.taojiu.com</div>
+    </div>
+
+    <div style="background:#f5f5f5;">
+        <div class="tao-header">
+            <div class="container">
+                <div class="tao-title">淘旧货</div>
+                <div class="tao-search">
+                    <input type="text" placeholder="搜索宝贝">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="tao-goods">
+                <div class="goods-item">
+                    <div class="goods-img">二手自行车</div>
+                    <div class="goods-name">八成新永久牌自行车</div>
+                    <div class="goods-price">¥ 120</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">旧衣柜</div>
+                    <div class="goods-name">实木老衣柜 结实耐用</div>
+                    <div class="goods-price">¥ 200</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">旧手机</div>
+                    <div class="goods-name">苹果6s 32G 功能正常</div>
+                    <div class="goods-price">¥ 350</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">旧书桌</div>
+                    <div class="goods-name">老式书桌 带抽屉</div>
+                    <div class="goods-price">¥ 80</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">缝纫机</div>
+                    <div class="goods-name">蝴蝶牌缝纫机 能用</div>
+                    <div class="goods-price">¥ 150</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">旧电视</div>
+                    <div class="goods-name">21寸老式彩电</div>
+                    <div class="goods-price">¥ 100</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">旧书</div>
+                    <div class="goods-name">八十年代旧杂志一堆</div>
+                    <div class="goods-price">¥ 50</div>
+                </div>
+                <div class="goods-item">
+                    <div class="goods-img">陶罐</div>
+                    <div class="goods-name">老陶罐 不知道年份</div>
+                    <div class="goods-price">¥ 300</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

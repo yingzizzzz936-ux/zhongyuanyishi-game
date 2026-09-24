@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>结局</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "微软雅黑", sans-serif; background: #222; }
+.browser {
+    width: 100%; max-width: 1200px; margin: 20px auto;
+    background: #f1f1f1; border-radius: 8px; overflow: hidden;
+}
+.browser-top {
+    background: #dcdcdc; padding: 8px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #bbb;
+}
+.back-btn {
+    padding: 4px 12px; background: #bbb; border: none;
+    border-radius: 3px; cursor: pointer; font-size: 13px;
+}
+.window-dots { display: flex; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28ca42; }
+.address-bar {
+    flex: 1; background: #fff; border: 1px solid #bbb;
+    border-radius: 4px; padding: 6px 10px; font-size: 14px; color: #555;
+}
+
+.ending {
+    min-height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px; background: #fff;
+}
+.ending-inner { max-width: 620px; line-height: 2; }
+.ending h2 { 
+    font-size: 28px; margin-bottom: 20px; color: #8b0000;
+    text-align: center;
+}
+.ending .lead {
+    font-size: 18px; font-weight: bold; color: #333;
+    text-align: center; margin-bottom: 25px;
+    padding-bottom: 15px; border-bottom: 1px dashed #ccc;
+}
+.ending p { font-size: 15px; margin-bottom: 12px; text-indent: 2em; text-align: left; }
+.restart-btn {
+    margin-top: 30px; padding: 10px 25px;
+    background: #ddd; border: none; border-radius: 4px;
+    cursor: pointer; font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="browser">
+    <div class="browser-top">
+        <button class="back-btn" onclick="history.back()">← 返回</button>
+        <div class="window-dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <div class="address-bar">结局</div>
+    </div>
+
+    <div class="ending">
+        <div class="ending-inner">
+            <h2>坏结局 · 系统警报</h2>
+            <div class="lead">警报响起的瞬间，你知道，你被盯上了。</div>
+            
+            <p>第三次验证失败的刹那，整个屏幕猛地浸成一片血红。</p>
+            <p>尖锐的警报声“嘀——嘀——”地从音箱里钻出来，刺得你耳膜发疼。屏幕中央“IP已锁定”的字样在红色背景里反复跳动，像某种警告，又像某种倒计时。</p>
+            <p>你慌慌张张地去点关闭、去拔网线，可都晚了。数据已经发出去了，你的位置、你的设备信息，都被那头的系统接得清清楚楚。</p>
+            <p>之后的几天你坐立不安，总觉得楼下有徘徊的脚步声，夜里有敲门声。</p>
+            <p>三天后，你失踪了。</p>
+            <p>休眠舱基地里又多了一个新编号，B-10。意识接入完成，记忆清除启动。新世界里，又多了一个没有过去的人。</p>
+            
+            <p style="text-align:center;color:#888;margin-top:30px;">—— 游戏结束 ——</p>
+            <p style="text-align:center;"><button class="restart-btn" onclick="location.href='index.html'">重新开始</button></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
