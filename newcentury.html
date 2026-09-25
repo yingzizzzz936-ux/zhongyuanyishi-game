@@ -3,38 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新世纪生物科技 - 官方网站</title>
+    <title>新世纪生物科技</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: "Microsoft YaHei", sans-serif;
-            color: #333;
-            background: #f5f7fa;
+        body {
+            background: #1a1a1a;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            padding: 20px;
         }
-        .header {
-            height: 70px;
+
+        /* ========== 模拟浏览器外壳 ========== */
+        .browser {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
             background: #fff;
-            border-bottom: 1px solid #e4e7ed;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .browser-top {
+            height: 48px;
+            background: #e0e0e0;
             display: flex;
             align-items: center;
-            padding: 0 60px;
+            padding: 0 16px;
+            gap: 16px;
+        }
+        .back-btn {
+            padding: 6px 16px;
+            background: #c8c8c8;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #333;
+        }
+        .back-btn:hover { background: #b8b8b8; }
+        .traffic-lights {
+            display: flex;
+            gap: 8px;
+        }
+        .light {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .light.red { background: #ff5f57; }
+        .light.yellow { background: #ffbd2e; }
+        .light.green { background: #28ca42; }
+        .address-bar {
+            flex: 1;
+            height: 30px;
+            background: #fff;
+            border-radius: 4px;
+            padding: 0 12px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #555;
+            font-family: monospace;
+        }
+
+        /* ========== 新世纪网站内容 ========== */
+        /* 顶部网站导航栏 */
+        .site-header {
+            height: 64px;
+            background: #ffffff;
+            border-bottom: 1px solid #e8ecf1;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            width: 100%;
         }
         .logo {
             font-size: 22px;
             font-weight: bold;
             color: #1a56db;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
-        .nav {
-            margin-left: 80px;
+        .site-nav {
+            margin-left: 60px;
             display: flex;
-            gap: 50px;
+            gap: 48px;
         }
-        .nav a {
-            color: #606266;
+        .site-nav a {
+            color: #4a4e57;
             text-decoration: none;
             font-size: 15px;
+            line-height: 64px;
         }
+        .site-nav a:hover { color: #1a56db; }
+
+        /* 横幅 */
         .banner {
             height: 320px;
             background: linear-gradient(135deg, #1a56db 0%, #0f2d6e 100%);
@@ -46,42 +106,48 @@
         }
         .banner h1 {
             font-size: 42px;
-            letter-spacing: 8px;
-            margin-bottom: 15px;
+            letter-spacing: 6px;
+            margin-bottom: 16px;
+            font-weight: bold;
         }
         .banner p {
             font-size: 16px;
             opacity: 0.85;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
+
+        /* 业务卡片 */
         .main {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 60px auto;
             display: flex;
-            gap: 30px;
+            gap: 32px;
             padding: 0 20px;
         }
         .card {
             flex: 1;
             background: #fff;
-            padding: 30px;
+            padding: 32px 28px;
             border-radius: 6px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         .card h3 {
             color: #1a56db;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             font-size: 18px;
+            font-weight: bold;
         }
         .card p {
-            color: #606266;
+            color: #55585f;
             line-height: 1.8;
             font-size: 14px;
         }
+
+        /* 页脚 */
         .footer {
             background: #2c3e50;
             color: #909399;
-            padding: 20px 60px;
+            padding: 20px 40px;
             margin-top: 60px;
             font-size: 13px;
             display: flex;
@@ -89,52 +155,63 @@
             align-items: center;
         }
         .admin-entry a {
-            color: #6b7280;
+            color: #8a909c;
             text-decoration: none;
             font-size: 12px;
         }
-        .admin-entry a:hover {
-            color: #1a56db;
-        }
+        .admin-entry a:hover { color: #1a56db; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">新世纪生物科技</div>
-        <div class="nav">
-            <a href="#">首页</a>
-            <a href="#">关于我们</a>
-            <a href="#">核心技术</a>
-            <a href="#">产品中心</a>
-            <a href="#">联系我们</a>
+    <div class="browser">
+        <!-- 浏览器顶部栏 -->
+        <div class="browser-top">
+            <button class="back-btn" onclick="location.href='index.html'">← 返回</button>
+            <div class="traffic-lights">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
+            <div class="address-bar">www.newcentury-bio.com</div>
         </div>
-    </div>
 
-    <div class="banner">
-        <h1>探索生命边界</h1>
-        <p>用科技延伸意识的可能</p>
-    </div>
+        <!-- 网站本体 -->
+        <div class="site-header">
+            <div class="logo">新世纪生物科技</div>
+            <div class="site-nav">
+                <a href="#">首页</a>
+                <a href="#">关于我们</a>
+                <a href="#">核心技术</a>
+                <a href="#">产品中心</a>
+                <a href="#">联系我们</a>
+            </div>
+        </div>
 
-    <div class="main">
-        <div class="card">
-            <h3>意识留存技术</h3>
-            <p>基于神经映射与数字孪生的前沿研究，实现意识特征的长期稳定保存，突破生物躯体的时间限制。</p>
+        <div class="banner">
+            <h1>探索生命边界</h1>
+            <p>用科技延伸意识的可能</p>
         </div>
-        <div class="card">
-            <h3>休眠舱系统</h3>
-            <p>第三代低温休眠解决方案，配套全周期生命体征监测与意识同步接口，适用于长周期任务与医疗场景。</p>
-        </div>
-        <div class="card">
-            <h3>地下基地网络</h3>
-            <p>全国布局7处标准化地下研究基地，具备独立能源与安保系统，保障研究工作的连续性与保密性。</p>
-        </div>
-    </div>
 
-    <!-- 页脚 + 后台入口 -->
-    <div class="footer">
-        <div>© 新世纪生物科技有限公司 版权所有</div>
-        <div class="admin-entry">
-            <a href="admin-login.html">管理后台</a>
+        <div class="main">
+            <div class="card">
+                <h3>意识留存技术</h3>
+                <p>基于神经映射与数字孪生的前沿研究，实现意识特征的长期稳定保存，突破生物躯体的时间限制。</p>
+            </div>
+            <div class="card">
+                <h3>休眠舱系统</h3>
+                <p>第三代低温休眠解决方案，配套全周期生命体征监测与意识同步接口，适用于长周期任务与医疗场景。</p>
+            </div>
+            <div class="card">
+                <h3>地下基地网络</h3>
+                <p>全国布局7处标准化地下研究基地，具备独立能源与安保系统，保障研究工作的连续性与保密性。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>© 新世纪生物科技有限公司 版权所有</div>
+            <div class="admin-entry">
+                <a href="admin-login.html">管理后台</a>
+            </div>
         </div>
     </div>
 </body>
